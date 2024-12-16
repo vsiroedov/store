@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Online store</title>
+{% endblock %}
+
+{% block body %}
+<div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+  <h1 class="display-4 fw-normal text-body-emphasis">Boxes and price</h1>
+  <p class="fs-5 text-body-secondary">
+In this store, you can purchase mystery boxes – no one knows what's inside:)</p>
+</div>
+</header>
+
+<main>
+  <div class="container">
+    <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+      {% for el in data %}
+      <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm">
+          <div class="card-header py-3">
+            <h4 class="my-0 fw-normal">{{ el.title }}</h4>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title">{{ el.price }}<small class="text-body-secondary fw-light"> uah</small></h1>
+            <ul class="list-unstyled mt-3 mb-4">
+              <li>!TOP SECRET!</li>
+            </ul>
+            <div class="d-flex justify-content-between">
+              <a href="" class="w-100 btn btn-lg btn-outline-primary">Buy</a>
+              <a href="{{ url_for('edit_item', id=el.id) }}" class="w-100 btn btn-lg btn-outline-warning">Edit</a>
+              <form action="{{ url_for('delete_item', id=el.id) }}" method="POST">
+                <button type="submit" class="w-100 btn btn-lg btn-outline-danger">Delete</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</main>
+{% endblock %}

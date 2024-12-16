@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/">Home</a>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Reports</h1>
+
+        <section>
+            <h2>1. Items with Price Over $30</h2>
+            <ul>
+                {% for item in items_over_30 %}
+                    <li>{{ item.title }} - ${{ item.price }}</li>
+                {% endfor %}
+            </ul>
+        </section>
+
+        <section>
+            <h2>2. Top 5 Most Expensive Items</h2>
+            <ul>
+                {% for item in top_expensive %}
+                    <li>{{ item.title }} - ${{ item.price }}</li>
+                {% endfor %}
+            </ul>
+        </section>
+
+        <section>
+            <h2>3. Total Items Count</h2>
+            <p>There are {{ total_items }} items in the database.</p>
+        </section>
+
+        <section>
+            <h2>4. Users with Letter 'T' in Username</h2>
+            <ul>
+                {% for user in users_with_t %}
+                    <li>{{ user.username }}</li>
+                {% endfor %}
+            </ul>
+        </section>
+
+        <section>
+            <h2>5. Items with '6' in Price</h2>
+            <ul>
+                {% for item in items_with_6_in_price %}
+                    <li>{{ item.title }} - ${{ item.price }}</li>
+                {% endfor %}
+            </ul>
+        </section>
+    </main>
+</body>
+</html>
